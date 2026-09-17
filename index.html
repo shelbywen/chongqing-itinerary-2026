@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="2026年9月18日至21日重庆密室行程，可按天查看、打卡并填写本机备注。">
 <meta property="og:title" content="重庆密室四日行程">
-<meta property="og:description" content="按天查看行程、酒店往返与场馆转场时间，并在手机上打卡和记录备注。">
+<meta property="og:description" content="按天查看关键时间、酒店往返与场馆转场，并在手机上打卡和记录备注。">
 <meta property="og:type" content="website">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,7 +22,7 @@
 &lt;html lang=&quot;zh-CN&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
 &lt;title&gt;重庆密室四日行程&lt;/title&gt;
@@ -1059,6 +1059,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     max-width: 900px;
     margin-inline: auto;
     padding: 8px 6px 20px;
+    font-size: 15px;
+    line-height: 1.55;
     letter-spacing: 0;
   }
 
@@ -1133,7 +1135,16 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
 
   #cq-trip-2026 .day-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
     margin-block: 14px 18px;
+  }
+
+  #cq-trip-2026 .day-tabs .btn {
+    min-width: 0;
+    width: 100%;
+    justify-content: space-between;
   }
 
   #cq-trip-2026 .day-panel {
@@ -1152,6 +1163,33 @@ html&gt;body{padding:0}&lt;/style&gt;
 
   #cq-trip-2026 .day-count {
     flex: 0 0 auto;
+  }
+
+  #cq-trip-2026 .key-times {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px 14px;
+    margin: 14px 0 0;
+  }
+
+  #cq-trip-2026 .key-time {
+    min-width: 0;
+    margin: 0;
+  }
+
+  #cq-trip-2026 .key-time dt,
+  #cq-trip-2026 .key-time dd {
+    margin: 0;
+  }
+
+  #cq-trip-2026 .key-time dd {
+    margin-top: 1px;
+    font-weight: 500;
+  }
+
+  #cq-trip-2026 .key-time.is-risk dt,
+  #cq-trip-2026 .key-time.is-risk dd {
+    color: var(--destructive);
   }
 
   #cq-trip-2026 .timeline {
@@ -1175,6 +1213,14 @@ html&gt;body{padding:0}&lt;/style&gt;
 
   #cq-trip-2026 .time-column span {
     display: block;
+  }
+
+  #cq-trip-2026 .time-start {
+    font-weight: 500;
+  }
+
+  #cq-trip-2026 .time-end {
+    margin-top: 1px;
   }
 
   #cq-trip-2026 .timeline-rail {
@@ -1292,14 +1338,50 @@ html&gt;body{padding:0}&lt;/style&gt;
     padding-bottom: 14px;
   }
 
+  #cq-trip-2026 .move-item.is-wait .move-content,
+  #cq-trip-2026 .move-item.is-break .move-content {
+    padding-bottom: 10px;
+  }
+
   #cq-trip-2026 .move-title {
     align-items: flex-start;
     font-weight: 500;
   }
 
+  #cq-trip-2026 .move-action {
+    flex: 0 0 auto;
+    color: var(--accent-foreground);
+  }
+
+  #cq-trip-2026 .move-item.is-risk .move-action {
+    color: var(--destructive);
+  }
+
   #cq-trip-2026 .move-details,
+  #cq-trip-2026 .move-buffer,
   #cq-trip-2026 .move-note {
     margin-top: 3px;
+  }
+
+  #cq-trip-2026 .move-buffer {
+    color: var(--foreground);
+  }
+
+  #cq-trip-2026 .risk-options {
+    display: grid;
+    gap: 7px;
+    margin-top: 7px;
+  }
+
+  #cq-trip-2026 .risk-option {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  #cq-trip-2026 .risk-option-time {
+    font-weight: 500;
+    white-space: nowrap;
   }
 
   #cq-trip-2026 .move-item.is-risk .move-title,
@@ -1326,13 +1408,29 @@ html&gt;body{padding:0}&lt;/style&gt;
       align-self: flex-start;
     }
 
+    #cq-trip-2026 .day-tabs,
+    #cq-trip-2026 .key-times {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #cq-trip-2026 .day-tabs {
+      gap: 7px;
+    }
+
     #cq-trip-2026 .timeline-item {
-      grid-template-columns: 54px 18px minmax(0, 1fr);
+      grid-template-columns: 62px 18px minmax(0, 1fr);
       gap: 7px;
     }
 
     #cq-trip-2026 .event-title-row {
       align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    #cq-trip-2026 .risk-option {
+      grid-template-columns: 1fr;
+      gap: 1px;
     }
 
     #cq-trip-2026 .day-panel {
@@ -1352,20 +1450,27 @@ html&gt;body{padding:0}&lt;/style&gt;
         weekday: &quot;周五&quot;,
         title: &quot;抵达重庆 · 观音桥&quot;,
         summary: &quot;5场体验 · 1程高铁&quot;,
+        keyTimes: [
+          { label: &quot;抵达重庆&quot;, value: &quot;10:59&quot; },
+          { label: &quot;酒店出发&quot;, value: &quot;13:10&quot; },
+          { label: &quot;首场&quot;, value: &quot;13:30&quot; },
+          { label: &quot;预计回店&quot;, value: &quot;23:05&quot; }
+        ],
         items: [
           { type: &quot;event&quot;, id: &quot;train-in&quot;, start: &quot;09:18&quot;, end: &quot;10:59&quot;, title: &quot;成都东 → 重庆北&quot;, kind: &quot;高铁&quot;, venue: &quot;动车行程&quot;, address: &quot;成都东站出发，重庆北站抵达&quot;, duration: &quot;1小时41分&quot;, tone: &quot;rail&quot; },
-          { type: &quot;move&quot;, label: &quot;到酒店&quot;, route: &quot;重庆北站 → 简舍轻奢酒店&quot;, duration: &quot;预计25-35分钟&quot;, mode: &quot;地铁 / 打车&quot;, buffer: &quot;约11:35到店&quot;, note: &quot;预留约20分钟寄存行李；能否提前入住以酒店安排为准&quot;, icon: &quot;hotel&quot; },
-          { type: &quot;move&quot;, label: &quot;出发&quot;, route: &quot;简舍轻奢酒店 → 茂业天地&quot;, duration: &quot;预计5-10分钟&quot;, mode: &quot;步行&quot;, buffer: &quot;建议13:10前出发&quot;, note: &quot;预计13:20前到达，可预留约10分钟候场&quot;, icon: &quot;footprints&quot; },
+          { type: &quot;move&quot;, start: &quot;10:59&quot;, end: &quot;11:35&quot;, label: &quot;到酒店&quot;, route: &quot;重庆北站 → 简舍轻奢酒店&quot;, duration: &quot;25-35分钟&quot;, mode: &quot;地铁 / 打车&quot;, buffer: &quot;约11:35到店&quot;, note: &quot;先寄存行李；能否提前入住以酒店安排为准&quot;, icon: &quot;hotel&quot;, subtype: &quot;travel&quot; },
+          { type: &quot;move&quot;, start: &quot;11:35&quot;, end: &quot;13:10&quot;, label: &quot;寄存行李 / 午餐 / 休息&quot;, route: &quot;酒店及周边&quot;, duration: &quot;1小时35分钟&quot;, mode: &quot;自由安排&quot;, buffer: &quot;13:10从酒店出发&quot;, icon: &quot;utensils&quot;, subtype: &quot;break&quot; },
+          { type: &quot;move&quot;, start: &quot;13:10&quot;, end: &quot;13:30&quot;, label: &quot;去茂业天地&quot;, route: &quot;酒店 → 茂业天地&quot;, duration: &quot;5-10分钟&quot;, mode: &quot;步行&quot;, buffer: &quot;13:20前到达 · 候场约10分钟&quot;, icon: &quot;footprints&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;taipei&quot;, start: &quot;13:30&quot;, end: &quot;14:40&quot;, title: &quot;《台北分尸案》&quot;, kind: &quot;密室&quot;, venue: &quot;One Super&quot;, address: &quot;观音桥茂业天地 6楼&quot;, duration: &quot;1小时10分&quot; },
-          { type: &quot;move&quot;, label: &quot;候场&quot;, route: &quot;同场馆原地候场&quot;, duration: &quot;空档20分钟&quot;, mode: &quot;无需转场&quot;, buffer: &quot;15:00开场&quot;, icon: &quot;coffee&quot; },
+          { type: &quot;move&quot;, start: &quot;14:40&quot;, end: &quot;15:00&quot;, label: &quot;原地候场&quot;, route: &quot;One Super&quot;, duration: &quot;20分钟&quot;, mode: &quot;无需转场&quot;, buffer: &quot;15:00开场&quot;, icon: &quot;coffee&quot;, subtype: &quot;wait&quot; },
           { type: &quot;event&quot;, id: &quot;kunjiam&quot;, start: &quot;15:00&quot;, end: &quot;16:00&quot;, title: &quot;《昆池岩》&quot;, kind: &quot;密室&quot;, venue: &quot;One Super&quot;, address: &quot;观音桥茂业天地 6楼&quot;, duration: &quot;1小时&quot; },
-          { type: &quot;move&quot;, label: &quot;换层&quot;, route: &quot;茂业天地 6楼 → 5楼&quot;, duration: &quot;预计5分钟&quot;, mode: &quot;电梯换层&quot;, buffer: &quot;余约15分钟&quot;, icon: &quot;arrow-down-up&quot; },
+          { type: &quot;move&quot;, start: &quot;16:00&quot;, end: &quot;16:20&quot;, label: &quot;换到5楼&quot;, route: &quot;茂业天地 6楼 → 5楼&quot;, duration: &quot;约5分钟&quot;, mode: &quot;电梯换层&quot;, buffer: &quot;约16:05到达 · 候场约15分钟&quot;, icon: &quot;arrow-down-up&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;fumo&quot;, start: &quot;16:20&quot;, end: &quot;17:40&quot;, title: &quot;《符魔》&quot;, kind: &quot;密室&quot;, venue: &quot;无间密室&quot;, address: &quot;观音桥茂业天地 5楼&quot;, duration: &quot;1小时20分&quot; },
-          { type: &quot;move&quot;, label: &quot;休整&quot;, route: &quot;无间密室原地休整&quot;, duration: &quot;空档1小时50分&quot;, mode: &quot;可安排晚餐&quot;, buffer: &quot;19:30开场&quot;, icon: &quot;utensils&quot; },
+          { type: &quot;move&quot;, start: &quot;17:40&quot;, end: &quot;19:30&quot;, label: &quot;晚餐 / 休整&quot;, route: &quot;茂业天地及周边&quot;, duration: &quot;1小时50分钟&quot;, mode: &quot;自由安排&quot;, buffer: &quot;19:15前返回 · 候场约15分钟&quot;, icon: &quot;utensils&quot;, subtype: &quot;break&quot; },
           { type: &quot;event&quot;, id: &quot;time-trick&quot;, start: &quot;19:30&quot;, end: &quot;20:50&quot;, title: &quot;《时间诡计》&quot;, kind: &quot;密室&quot;, venue: &quot;无间密室&quot;, address: &quot;观音桥茂业天地 5楼&quot;, duration: &quot;1小时20分&quot; },
-          { type: &quot;move&quot;, label: &quot;步行&quot;, route: &quot;茂业天地 → 阳光城大厦&quot;, duration: &quot;预计10-15分钟&quot;, mode: &quot;步行&quot;, buffer: &quot;余约15分钟&quot;, note: &quot;建议20:55前离场出发&quot;, icon: &quot;footprints&quot; },
+          { type: &quot;move&quot;, start: &quot;20:50&quot;, end: &quot;21:20&quot;, label: &quot;去阳光城大厦&quot;, route: &quot;茂业天地 → 阳光城大厦&quot;, duration: &quot;10-15分钟&quot;, mode: &quot;步行&quot;, buffer: &quot;约21:05到达 · 候场约15分钟&quot;, icon: &quot;footprints&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;huayin&quot;, start: &quot;21:20&quot;, end: &quot;22:50&quot;, title: &quot;《花阴》&quot;, kind: &quot;密室&quot;, venue: &quot;幻城密室&quot;, address: &quot;观音桥阳光城大厦 8楼&quot;, duration: &quot;1小时30分&quot; },
-          { type: &quot;move&quot;, label: &quot;回酒店&quot;, route: &quot;阳光城大厦 → 简舍轻奢酒店&quot;, duration: &quot;预计10-15分钟&quot;, mode: &quot;步行 / 短途打车&quot;, buffer: &quot;约23:05到店&quot;, icon: &quot;hotel&quot; }
+          { type: &quot;move&quot;, start: &quot;22:50&quot;, end: &quot;23:05&quot;, label: &quot;回酒店&quot;, route: &quot;阳光城大厦 → 简舍轻奢酒店&quot;, duration: &quot;10-15分钟&quot;, mode: &quot;步行 / 短途打车&quot;, buffer: &quot;约23:05到店&quot;, icon: &quot;hotel&quot;, subtype: &quot;travel&quot; }
         ]
       },
       &quot;0919&quot;: {
@@ -1373,20 +1478,26 @@ html&gt;body{padding:0}&lt;/style&gt;
         weekday: &quot;周六&quot;,
         title: &quot;茂业天地 → 新壹街&quot;,
         summary: &quot;6场体验&quot;,
+        keyTimes: [
+          { label: &quot;酒店出发&quot;, value: &quot;09:40&quot; },
+          { label: &quot;首场&quot;, value: &quot;10:00&quot; },
+          { label: &quot;末场结束&quot;, value: &quot;22:40&quot; },
+          { label: &quot;预计回店&quot;, value: &quot;23:05&quot; }
+        ],
         items: [
-          { type: &quot;move&quot;, label: &quot;出发&quot;, route: &quot;简舍轻奢酒店 → 茂业天地&quot;, duration: &quot;预计5-10分钟&quot;, mode: &quot;步行&quot;, buffer: &quot;建议09:40前出发&quot;, note: &quot;预计09:50前到达，可预留约10分钟候场&quot;, icon: &quot;footprints&quot; },
+          { type: &quot;move&quot;, start: &quot;09:40&quot;, end: &quot;10:00&quot;, label: &quot;去茂业天地&quot;, route: &quot;简舍轻奢酒店 → 茂业天地&quot;, duration: &quot;5-10分钟&quot;, mode: &quot;步行&quot;, buffer: &quot;约09:50到达 · 候场约10分钟&quot;, icon: &quot;footprints&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;farewell&quot;, start: &quot;10:00&quot;, end: &quot;11:20&quot;, title: &quot;《漫长的告别》&quot;, kind: &quot;密室&quot;, venue: &quot;阿米尔密室逃脱&quot;, address: &quot;观音桥茂业天地 20-38号&quot;, duration: &quot;1小时20分&quot; },
-          { type: &quot;move&quot;, label: &quot;换层&quot;, route: &quot;阿米尔 → 割尾鬼密室&quot;, duration: &quot;预计5-10分钟&quot;, mode: &quot;同商场换层&quot;, buffer: &quot;余约1小时&quot;, icon: &quot;arrow-down-up&quot; },
+          { type: &quot;move&quot;, start: &quot;11:20&quot;, end: &quot;12:30&quot;, label: &quot;换到31楼&quot;, route: &quot;阿米尔 → 割尾鬼密室&quot;, duration: &quot;5-10分钟&quot;, mode: &quot;同商场换层&quot;, buffer: &quot;约11:30到达 · 自由时间约1小时&quot;, icon: &quot;arrow-down-up&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;huashi&quot;, start: &quot;12:30&quot;, end: &quot;14:10&quot;, title: &quot;《画尸》&quot;, kind: &quot;密室&quot;, venue: &quot;割尾鬼密室&quot;, address: &quot;观音桥茂业天地 31楼&quot;, duration: &quot;1小时40分&quot; },
-          { type: &quot;move&quot;, label: &quot;候场&quot;, route: &quot;割尾鬼密室原地候场&quot;, duration: &quot;空档40分钟&quot;, mode: &quot;无需转场&quot;, buffer: &quot;14:50开场&quot;, icon: &quot;coffee&quot; },
+          { type: &quot;move&quot;, start: &quot;14:10&quot;, end: &quot;14:50&quot;, label: &quot;原地候场&quot;, route: &quot;割尾鬼密室&quot;, duration: &quot;40分钟&quot;, mode: &quot;无需转场&quot;, buffer: &quot;14:50开场&quot;, icon: &quot;coffee&quot;, subtype: &quot;wait&quot; },
           { type: &quot;event&quot;, id: &quot;school-bus&quot;, start: &quot;14:50&quot;, end: &quot;16:10&quot;, title: &quot;《空校车》&quot;, kind: &quot;密室&quot;, venue: &quot;割尾鬼密室&quot;, address: &quot;观音桥茂业天地 31楼&quot;, duration: &quot;1小时20分&quot; },
-          { type: &quot;move&quot;, label: &quot;候场&quot;, route: &quot;割尾鬼密室原地候场&quot;, duration: &quot;空档50分钟&quot;, mode: &quot;无需转场&quot;, buffer: &quot;17:00开场&quot;, icon: &quot;coffee&quot; },
+          { type: &quot;move&quot;, start: &quot;16:10&quot;, end: &quot;17:00&quot;, label: &quot;原地候场&quot;, route: &quot;割尾鬼密室&quot;, duration: &quot;50分钟&quot;, mode: &quot;无需转场&quot;, buffer: &quot;17:00开场&quot;, icon: &quot;coffee&quot;, subtype: &quot;wait&quot; },
           { type: &quot;event&quot;, id: &quot;blood-umbrella&quot;, start: &quot;17:00&quot;, end: &quot;18:30&quot;, title: &quot;《血祭伞》&quot;, kind: &quot;密室&quot;, venue: &quot;割尾鬼密室&quot;, address: &quot;观音桥茂业天地 31楼&quot;, duration: &quot;1小时30分&quot; },
-          { type: &quot;move&quot;, label: &quot;转场&quot;, route: &quot;茂业天地 → 龙湖新壹街 B馆&quot;, duration: &quot;预计20-30分钟&quot;, mode: &quot;建议打车&quot;, buffer: &quot;余约30分钟&quot;, icon: &quot;car-front&quot; },
+          { type: &quot;move&quot;, start: &quot;18:30&quot;, end: &quot;19:30&quot;, label: &quot;去龙湖新壹街B馆&quot;, route: &quot;茂业天地 → 新壹街 B馆&quot;, duration: &quot;20-30分钟&quot;, mode: &quot;建议打车&quot;, buffer: &quot;约19:00到达 · 候场约30分钟&quot;, icon: &quot;car-front&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;jiuji&quot;, start: &quot;19:30&quot;, end: &quot;21:00&quot;, title: &quot;《九祭》&quot;, kind: &quot;密室&quot;, venue: &quot;龙门密室&quot;, address: &quot;龙湖新壹街 B馆 2楼&quot;, duration: &quot;1小时30分&quot; },
-          { type: &quot;move&quot;, label: &quot;步行&quot;, route: &quot;新壹街 B馆 → D馆4号楼&quot;, duration: &quot;预计10-15分钟&quot;, mode: &quot;步行&quot;, buffer: &quot;余约15分钟&quot;, note: &quot;目的地为D馆4号楼807室&quot;, icon: &quot;footprints&quot; },
+          { type: &quot;move&quot;, start: &quot;21:00&quot;, end: &quot;21:30&quot;, label: &quot;去D馆4号楼&quot;, route: &quot;新壹街 B馆 → D馆4号楼&quot;, duration: &quot;10-15分钟&quot;, mode: &quot;步行&quot;, buffer: &quot;约21:15到达 · 候场约15分钟&quot;, note: &quot;目的地为D馆4号楼807室&quot;, icon: &quot;footprints&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;cage&quot;, start: &quot;21:30&quot;, end: &quot;22:40&quot;, title: &quot;《Cage》&quot;, kind: &quot;光影&quot;, venue: &quot;迴梦光影艺术&quot;, address: &quot;新壹街 D馆4号楼 807室&quot;, duration: &quot;1小时10分&quot; },
-          { type: &quot;move&quot;, label: &quot;回酒店&quot;, route: &quot;新壹街 D馆 → 简舍轻奢酒店&quot;, duration: &quot;预计15-25分钟&quot;, mode: &quot;建议打车&quot;, buffer: &quot;约23:05到店&quot;, icon: &quot;hotel&quot; }
+          { type: &quot;move&quot;, start: &quot;22:40&quot;, end: &quot;23:05&quot;, label: &quot;回酒店&quot;, route: &quot;新壹街 D馆 → 简舍轻奢酒店&quot;, duration: &quot;15-25分钟&quot;, mode: &quot;建议打车&quot;, buffer: &quot;约23:05到店&quot;, icon: &quot;hotel&quot;, subtype: &quot;travel&quot; }
         ]
       },
       &quot;0920&quot;: {
@@ -1394,20 +1505,29 @@ html&gt;body{padding:0}&lt;/style&gt;
         weekday: &quot;周日&quot;,
         title: &quot;茂业天地 → IBOX&quot;,
         summary: &quot;6场体验&quot;,
+        keyTimes: [
+          { label: &quot;酒店出发&quot;, value: &quot;09:40&quot; },
+          { label: &quot;首场&quot;, value: &quot;10:00&quot; },
+          { label: &quot;零换场&quot;, value: &quot;13:20&quot;, risk: true },
+          { label: &quot;预计回店&quot;, value: &quot;23:45&quot; }
+        ],
         items: [
-          { type: &quot;move&quot;, label: &quot;出发&quot;, route: &quot;简舍轻奢酒店 → 茂业天地&quot;, duration: &quot;预计5-10分钟&quot;, mode: &quot;步行&quot;, buffer: &quot;建议09:40前出发&quot;, note: &quot;预计09:50前到达，可预留约10分钟候场&quot;, icon: &quot;footprints&quot; },
+          { type: &quot;move&quot;, start: &quot;09:40&quot;, end: &quot;10:00&quot;, label: &quot;去茂业天地&quot;, route: &quot;简舍轻奢酒店 → 茂业天地&quot;, duration: &quot;5-10分钟&quot;, mode: &quot;步行&quot;, buffer: &quot;约09:50到达 · 候场约10分钟&quot;, icon: &quot;footprints&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;invisible-girl&quot;, start: &quot;10:00&quot;, end: &quot;11:20&quot;, title: &quot;《看不见的女孩》&quot;, kind: &quot;密室&quot;, venue: &quot;阿米尔密室逃脱&quot;, address: &quot;观音桥茂业天地 20-38号&quot;, duration: &quot;1小时20分&quot; },
-          { type: &quot;move&quot;, label: &quot;候场&quot;, route: &quot;阿米尔密室原地候场&quot;, duration: &quot;空档40分钟&quot;, mode: &quot;无需转场&quot;, buffer: &quot;12:00开场&quot;, icon: &quot;coffee&quot; },
+          { type: &quot;move&quot;, start: &quot;11:20&quot;, end: &quot;12:00&quot;, label: &quot;原地候场&quot;, route: &quot;阿米尔密室&quot;, duration: &quot;40分钟&quot;, mode: &quot;无需转场&quot;, buffer: &quot;12:00开场&quot;, icon: &quot;coffee&quot;, subtype: &quot;wait&quot; },
           { type: &quot;event&quot;, id: &quot;aden-bay&quot;, start: &quot;12:00&quot;, end: &quot;13:20&quot;, title: &quot;《亚丁湾》&quot;, kind: &quot;密室&quot;, venue: &quot;阿米尔密室逃脱&quot;, address: &quot;观音桥茂业天地 20-38号&quot;, duration: &quot;1小时20分&quot; },
-          { type: &quot;move&quot;, label: &quot;冲突&quot;, route: &quot;茂业天地 → IBOX游乐场&quot;, duration: &quot;预计10-15分钟&quot;, mode: &quot;步行 / 短途打车&quot;, buffer: &quot;换场时间为0&quot;, note: &quot;建议《亚丁湾》提前15分钟离场，或协调《非恐》延后开场&quot;, icon: &quot;triangle-alert&quot;, risk: true },
+          { type: &quot;move&quot;, start: &quot;13:20&quot;, end: &quot;零换场&quot;, label: &quot;时间冲突&quot;, route: &quot;茂业天地 → IBOX游乐场&quot;, duration: &quot;10-15分钟&quot;, mode: &quot;步行 / 短途打车&quot;, buffer: &quot;两场预约在13:20首尾相接&quot;, note: &quot;务必提前联系两家场馆确认方案&quot;, icon: &quot;triangle-alert&quot;, risk: true, subtype: &quot;travel&quot;, riskOptions: [
+            { time: &quot;13:05 → 13:20&quot;, text: &quot;提前离开《亚丁湾》，可准时到达；须先与场馆确认&quot; },
+            { time: &quot;13:20 → 13:35&quot;, text: &quot;正常结束后再转场，预计迟到10-15分钟&quot; }
+          ] },
           { type: &quot;event&quot;, id: &quot;not-scary&quot;, start: &quot;13:20&quot;, end: &quot;14:40&quot;, title: &quot;《非恐》&quot;, kind: &quot;密室&quot;, venue: &quot;梦核密室&quot;, address: &quot;观音桥街道 IBOX游乐场 2楼&quot;, duration: &quot;1小时20分&quot; },
-          { type: &quot;move&quot;, label: &quot;换店&quot;, route: &quot;梦核密室 → 北野奇闻密室&quot;, duration: &quot;预计5分钟&quot;, mode: &quot;同商场同楼层&quot;, buffer: &quot;余约55分钟&quot;, icon: &quot;store&quot; },
+          { type: &quot;move&quot;, start: &quot;14:40&quot;, end: &quot;15:40&quot;, label: &quot;换到北野奇闻&quot;, route: &quot;梦核密室 → 北野奇闻密室&quot;, duration: &quot;约5分钟&quot;, mode: &quot;同商场同楼层&quot;, buffer: &quot;约14:45到达 · 自由时间约55分钟&quot;, icon: &quot;store&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;ghosts&quot;, start: &quot;15:40&quot;, end: &quot;17:00&quot;, title: &quot;《百鬼僵至》&quot;, kind: &quot;密室&quot;, venue: &quot;北野奇闻密室&quot;, address: &quot;IBOX游乐场 2楼&quot;, duration: &quot;1小时20分&quot; },
-          { type: &quot;move&quot;, label: &quot;休整&quot;, route: &quot;IBOX 2楼 → 1楼&quot;, duration: &quot;预计5分钟&quot;, mode: &quot;同商场换层&quot;, buffer: &quot;余约2小时25分钟&quot;, note: &quot;可安排晚餐和休息&quot;, icon: &quot;utensils&quot; },
+          { type: &quot;move&quot;, start: &quot;17:00&quot;, end: &quot;19:30&quot;, label: &quot;晚餐 / 休整并换到1楼&quot;, route: &quot;IBOX 2楼 → 1楼&quot;, duration: &quot;约5分钟换层&quot;, mode: &quot;同商场内&quot;, buffer: &quot;约17:05到达 · 19:15前结束用餐 · 候场约15分钟&quot;, icon: &quot;utensils&quot;, subtype: &quot;break&quot; },
           { type: &quot;event&quot;, id: &quot;fengmoshi&quot;, start: &quot;19:30&quot;, end: &quot;20:45&quot;, title: &quot;《逢魔时》&quot;, kind: &quot;密室&quot;, venue: &quot;幻城密室&quot;, address: &quot;IBOX商场 1楼&quot;, duration: &quot;1小时15分&quot; },
-          { type: &quot;move&quot;, label: &quot;换层&quot;, route: &quot;IBOX 1楼 → 2楼&quot;, duration: &quot;预计5分钟&quot;, mode: &quot;同商场换层&quot;, buffer: &quot;余约1小时10分钟&quot;, icon: &quot;arrow-down-up&quot; },
+          { type: &quot;move&quot;, start: &quot;20:45&quot;, end: &quot;22:00&quot;, label: &quot;换回2楼 / 休息&quot;, route: &quot;IBOX 1楼 → 2楼&quot;, duration: &quot;约5分钟&quot;, mode: &quot;同商场换层&quot;, buffer: &quot;约20:50到达 · 自由时间约1小时10分钟&quot;, icon: &quot;arrow-down-up&quot;, subtype: &quot;break&quot; },
           { type: &quot;event&quot;, id: &quot;breaking-hell&quot;, start: &quot;22:00&quot;, end: &quot;23:30&quot;, title: &quot;《破地狱》&quot;, kind: &quot;密室&quot;, venue: &quot;梦核密室&quot;, address: &quot;观音桥街道 IBOX游乐场 2楼&quot;, duration: &quot;1小时30分&quot; },
-          { type: &quot;move&quot;, label: &quot;回酒店&quot;, route: &quot;IBOX游乐场 → 简舍轻奢酒店&quot;, duration: &quot;预计10-15分钟&quot;, mode: &quot;步行 / 短途打车&quot;, buffer: &quot;约23:45到店&quot;, icon: &quot;hotel&quot; }
+          { type: &quot;move&quot;, start: &quot;23:30&quot;, end: &quot;23:45&quot;, label: &quot;回酒店&quot;, route: &quot;IBOX游乐场 → 简舍轻奢酒店&quot;, duration: &quot;10-15分钟&quot;, mode: &quot;步行 / 短途打车&quot;, buffer: &quot;约23:45到店&quot;, icon: &quot;hotel&quot;, subtype: &quot;travel&quot; }
         ]
       },
       &quot;0921&quot;: {
@@ -1415,12 +1535,20 @@ html&gt;body{padding:0}&lt;/style&gt;
         weekday: &quot;周一&quot;,
         title: &quot;时代天街 → 返程&quot;,
         summary: &quot;2场体验 · 1程高铁&quot;,
+        keyTimes: [
+          { label: &quot;退房出发&quot;, value: &quot;10:40&quot; },
+          { label: &quot;首场&quot;, value: &quot;11:30&quot; },
+          { label: &quot;去重庆西站&quot;, value: &quot;15:45&quot; },
+          { label: &quot;抵达成都南&quot;, value: &quot;19:01&quot; }
+        ],
         items: [
-          { type: &quot;move&quot;, label: &quot;退房出发&quot;, route: &quot;简舍轻奢酒店 → 时代天街 D馆&quot;, duration: &quot;预计25-35分钟&quot;, mode: &quot;建议打车&quot;, buffer: &quot;建议10:40前出发&quot;, note: &quot;返程日建议退房并携带行李，之后直接前往重庆西站，不再返回酒店&quot;, icon: &quot;luggage&quot; },
+          { type: &quot;move&quot;, start: &quot;10:40&quot;, end: &quot;11:30&quot;, label: &quot;退房后去时代天街&quot;, route: &quot;简舍轻奢酒店 → 时代天街 D馆&quot;, duration: &quot;25-35分钟&quot;, mode: &quot;建议打车&quot;, buffer: &quot;约11:15到达 · 候场至少15分钟&quot;, note: &quot;携带行李，之后直接前往重庆西站，不再返回酒店&quot;, icon: &quot;luggage&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;night-watchman&quot;, start: &quot;11:30&quot;, end: &quot;12:50&quot;, title: &quot;《打更人》&quot;, kind: &quot;密室&quot;, venue: &quot;无间密室&quot;, address: &quot;时代天街 D馆11栋背街 G层&quot;, duration: &quot;1小时20分&quot; },
-          { type: &quot;move&quot;, label: &quot;转场&quot;, route: &quot;时代天街 → 龙腾大道201号附3号&quot;, duration: &quot;预计15-25分钟&quot;, mode: &quot;建议打车&quot;, buffer: &quot;余约45分钟&quot;, icon: &quot;car-front&quot; },
+          { type: &quot;move&quot;, start: &quot;12:50&quot;, end: &quot;14:00&quot;, label: &quot;去龙腾大道&quot;, route: &quot;时代天街 → 龙腾大道201号附3号&quot;, duration: &quot;15-25分钟&quot;, mode: &quot;建议打车&quot;, buffer: &quot;约13:15到达 · 候场至少45分钟&quot;, icon: &quot;car-front&quot;, subtype: &quot;travel&quot; },
           { type: &quot;event&quot;, id: &quot;taisui&quot;, start: &quot;14:00&quot;, end: &quot;15:30&quot;, title: &quot;《太岁》&quot;, kind: &quot;密室&quot;, venue: &quot;产物重塑&quot;, address: &quot;龙腾大道201号附3号&quot;, duration: &quot;1小时30分&quot; },
-          { type: &quot;move&quot;, label: &quot;返程&quot;, route: &quot;产物重塑 → 重庆西站&quot;, duration: &quot;预计25-35分钟&quot;, mode: &quot;建议打车&quot;, buffer: &quot;建议15:45前出发&quot;, note: &quot;预计16:20前后到站，可预留约1小时进站候车&quot;, icon: &quot;car-front&quot; },
+          { type: &quot;move&quot;, start: &quot;15:30&quot;, end: &quot;15:45&quot;, label: &quot;整理 / 离场&quot;, route: &quot;产物重塑&quot;, duration: &quot;15分钟&quot;, mode: &quot;收拾行李&quot;, buffer: &quot;15:45上车&quot;, icon: &quot;luggage&quot;, subtype: &quot;break&quot; },
+          { type: &quot;move&quot;, start: &quot;15:45&quot;, end: &quot;16:20&quot;, label: &quot;打车去重庆西站&quot;, route: &quot;产物重塑 → 重庆西站&quot;, duration: &quot;25-35分钟&quot;, mode: &quot;建议打车&quot;, buffer: &quot;约16:20到站&quot;, icon: &quot;car-front&quot;, subtype: &quot;travel&quot; },
+          { type: &quot;move&quot;, start: &quot;16:20&quot;, end: &quot;17:22&quot;, label: &quot;进站 / 候车&quot;, route: &quot;重庆西站&quot;, duration: &quot;1小时2分钟&quot;, mode: &quot;安检 / 进站 / 候车&quot;, buffer: &quot;17:22发车&quot;, icon: &quot;clock-3&quot;, subtype: &quot;wait&quot; },
           { type: &quot;event&quot;, id: &quot;train-out&quot;, start: &quot;17:22&quot;, end: &quot;19:01&quot;, title: &quot;重庆西 → 成都南&quot;, kind: &quot;高铁&quot;, venue: &quot;动车行程&quot;, address: &quot;重庆西站出发，成都南站抵达&quot;, duration: &quot;1小时39分&quot;, tone: &quot;rail&quot; }
         ]
       }
@@ -1483,8 +1611,8 @@ html&gt;body{padding:0}&lt;/style&gt;
       return `
         &lt;li class=&quot;timeline-item event-item${done ? &quot; is-done&quot; : &quot;&quot;}&quot; data-event-id=&quot;${item.id}&quot; data-tone=&quot;${item.tone || &quot;activity&quot;}&quot;&gt;
           &lt;div class=&quot;time-column tabular-nums&quot;&gt;
-            &lt;span&gt;${item.start}&lt;/span&gt;
-            &lt;span class=&quot;text-small text-muted&quot;&gt;${item.end}&lt;/span&gt;
+            &lt;span class=&quot;time-start&quot;&gt;${item.start}&lt;/span&gt;
+            &lt;span class=&quot;time-end text-small text-muted&quot;&gt;→ ${item.end}&lt;/span&gt;
           &lt;/div&gt;
           &lt;div class=&quot;timeline-rail&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;timeline-dot&quot;&gt;&lt;/span&gt;&lt;/div&gt;
           &lt;div class=&quot;event-content&quot;&gt;
@@ -1517,12 +1645,17 @@ html&gt;body{padding:0}&lt;/style&gt;
     };
 
     const renderMove = (item) =&gt; `
-      &lt;li class=&quot;timeline-item move-item${item.risk ? &quot; is-risk&quot; : &quot;&quot;}&quot;&gt;
-        &lt;div class=&quot;time-column text-small ${item.risk ? &quot;text-destructive&quot; : &quot;text-muted&quot;}&quot;&gt;${item.label}&lt;/div&gt;
+      &lt;li class=&quot;timeline-item move-item is-${item.subtype || &quot;travel&quot;}${item.risk ? &quot; is-risk&quot; : &quot;&quot;}&quot;&gt;
+        &lt;div class=&quot;time-column tabular-nums${item.risk ? &quot; text-destructive&quot; : &quot;&quot;}&quot;&gt;
+          &lt;span class=&quot;time-start&quot;&gt;${item.start}&lt;/span&gt;
+          &lt;span class=&quot;time-end text-small${item.risk ? &quot;&quot; : &quot; text-muted&quot;}&quot;&gt;${item.end === &quot;零换场&quot; ? item.end : `→ ${item.end}`}&lt;/span&gt;
+        &lt;/div&gt;
         &lt;div class=&quot;timeline-rail&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;timeline-dot&quot;&gt;&lt;/span&gt;&lt;/div&gt;
         &lt;div class=&quot;move-content&quot;&gt;
-          &lt;div class=&quot;move-title&quot;&gt;&lt;i data-lucide=&quot;${item.icon}&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;${item.route}&lt;/span&gt;&lt;/div&gt;
-          &lt;p class=&quot;move-details text-small text-muted&quot;&gt;${item.duration} · ${item.mode} · ${item.buffer}&lt;/p&gt;
+          &lt;div class=&quot;move-title&quot;&gt;&lt;i data-lucide=&quot;${item.icon}&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;&lt;span class=&quot;move-action&quot;&gt;${item.label}&lt;/span&gt; · ${item.route}&lt;/span&gt;&lt;/div&gt;
+          &lt;p class=&quot;move-details text-small text-muted&quot;&gt;${item.mode} · ${item.duration}&lt;/p&gt;
+          &lt;p class=&quot;move-buffer text-small&quot;&gt;${item.buffer}&lt;/p&gt;
+          ${item.riskOptions ? `&lt;div class=&quot;risk-options&quot;&gt;${item.riskOptions.map((option) =&gt; `&lt;div class=&quot;risk-option text-small&quot;&gt;&lt;span class=&quot;risk-option-time tabular-nums&quot;&gt;${option.time}&lt;/span&gt;&lt;span&gt;${option.text}&lt;/span&gt;&lt;/div&gt;`).join(&quot;&quot;)}&lt;/div&gt;` : &quot;&quot;}
           ${item.note ? `&lt;p class=&quot;move-note text-small&quot;&gt;${item.note}&lt;/p&gt;` : &quot;&quot;}
         &lt;/div&gt;
       &lt;/li&gt;`;
@@ -1554,6 +1687,9 @@ html&gt;body{padding:0}&lt;/style&gt;
           &lt;/div&gt;
           &lt;span class=&quot;day-count tabular-nums&quot;&gt;${dayDone} / ${ids.length} 已完成&lt;/span&gt;
         &lt;/div&gt;
+        &lt;dl class=&quot;key-times&quot; aria-label=&quot;当日关键时间&quot;&gt;
+          ${day.keyTimes.map((item) =&gt; `&lt;div class=&quot;key-time${item.risk ? &quot; is-risk&quot; : &quot;&quot;}&quot;&gt;&lt;dt class=&quot;text-small text-muted&quot;&gt;${item.label}&lt;/dt&gt;&lt;dd class=&quot;tabular-nums&quot;&gt;${item.value}&lt;/dd&gt;&lt;/div&gt;`).join(&quot;&quot;)}
+        &lt;/dl&gt;
         &lt;ol class=&quot;timeline&quot; aria-label=&quot;${day.date}${day.weekday}行程时间轴&quot;&gt;
           ${day.items.map((item) =&gt; item.type === &quot;event&quot; ? renderEvent(item) : renderMove(item)).join(&quot;&quot;)}
         &lt;/ol&gt;`;
